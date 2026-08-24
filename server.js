@@ -5,7 +5,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"), {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith(".css")) {
+      res.setHeader("Content-Type", "text/css");
+    }
+  }
+}));
 
 const DEMO_POSTS = [
   {
@@ -406,5 +412,13 @@ app.post("/api/search",async(req,res)=>{
   }catch(e){res.status(500).json({error:e.message||"Unexpected server error."});}
 });
 
-app.get("*",(req,res)=>res.sendFile(path.join(__dirname,"public","index.html")));
-app.listen(PORT,()=>console.log(`X Intent Listener running at http://localhost:${PORT}`));
+
+
+// Keep this LAST
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`X Intent Listener running at http://localhost:${PORT}`);
+});
