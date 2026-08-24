@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>X Intent Listener</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="shell">
+  <header>
+    <div>
+      <div class="eyebrow">SOCIAL LISTENING</div>
+      <h1>X Intent Listener</h1>
+      <p>Find people on X who are actively asking for help with AI, automation, workflows, UGC and development.</p>
+    </div>
+    <span id="mode" class="badge">Checking…</span>
+  </header>
+
+  <main>
+    <section class="panel">
+      <label for="intent">Natural-language intent</label>
+      <textarea id="intent" rows="3" placeholder="e.g. Find people on X looking for someone to build a custom AI workflow"></textarea>
+
+      <div class="or">OR</div>
+
+      <label for="keywords">Keywords</label>
+      <input id="keywords" placeholder="AI automation, AI UGC, workflow, developer">
+
+      <div class="row">
+        <button id="search">Find matching posts</button>
+        <button id="demo" class="secondary">Try example</button>
+      </div>
+      <p class="hint">No outreach is automated. Results are for manual review.</p>
+    </section>
+
+    <section class="panel results-panel">
+      <div class="results-head">
+        <div>
+          <h2>Matching posts</h2>
+          <p id="status">Enter an intent to search.</p>
+        </div>
+        <div id="query" class="query"></div>
+      </div>
+      <div id="results"></div>
+    </section>
+  </main>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>
